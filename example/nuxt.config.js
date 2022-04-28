@@ -6,35 +6,25 @@ module.exports = {
   rootDir: resolve(__dirname, '..'),
   buildDir: resolve(__dirname, '../.nuxt'),
   srcDir: __dirname,
+  head: {
+    title: 'nuxt-web3modal-module',
+    meta: [{
+      charset: 'utf-8'
+    }, {
+      name: 'viewport',
+      content: 'width=device-width, initial-scale=1'
+    }, {
+      hid: 'description',
+      name: 'description',
+      content: 'nuxt-web3modal module'
+    }]
+  },
   modules: [
-    '@walletconnect/web3-provider',
-    '@coinbase/wallet-sdk',
     {
       handler: require('../').default,
       options: {
-        provider: {
-          walletconnect: {
-            package: null, // Required
-            options: {
-              infuraId: "" // Required
-            }
-          },
-          coinbasewallet: {
-            package: null, // Required
-            options: {
-              appName: "", // Required
-              infuraId: "", // Required
-              rpc: "", // Optional if `infuraId` is provided; otherwise it's required
-              chainId: 1, // Optional. It defaults to 1 if not provided
-              darkMode: false // Optional. Use dark theme, defaults to false
-            }
-          }
-        }
+        method: 'eth_chainId'
       }
-    },
-  ],
-  plugins: [
-    '~/plugins/walletconnect.js',
-    '~/plugins/coinbase.js'
-  ],
+    }
+  ]
 };

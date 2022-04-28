@@ -17,11 +17,12 @@
   "scripts": {
     "dev": "nuxt example",
     "generate": "nuxt generate",
-    "release": "git push --follow-tags && npm publish",
+    "release": "standard-version && git push --follow-tags && npm publish",
     "start": "nuxt start"
   },
   "dependencies": {
     "@coinbase/wallet-sdk": "^3.0.8",
+    "@metamask/detect-provider": "^1.2.0",
     "@walletconnect/web3-provider": "^1.7.7",
     "web3": "^1.7.3",
     "web3modal": "^1.9.7"
